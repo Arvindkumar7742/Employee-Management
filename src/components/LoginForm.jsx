@@ -2,8 +2,7 @@ import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-
-// import { login } from "../../../services/operations/authOperation"
+import { login } from "../services/operations/authOperation"
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -25,8 +24,9 @@ function LoginForm() {
   }
 
   const handleOnSubmit = (e) => {
+    const userName = username;
     e.preventDefault();
-    // dispatch(login(email, password, navigate))
+    dispatch(login(userName , password , navigate));
   }
 
   return (
@@ -87,7 +87,7 @@ function LoginForm() {
         type="submit"
         className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
       >
-        Sign Up
+        Log in
       </button>
     </form>
   )

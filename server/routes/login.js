@@ -4,6 +4,6 @@ const router =express.Router();
 
 //listing all the login routes
 router.post("/register" , register );
-router.get("/login",login);
+router.post("/login",login);
 
 module.exports = router;

@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import frameImg from "../data/frame.png"
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignUpForm"
 
 function Template({ title , image, formType }) {
-    const loading = false;
+    const {loading} = useSelector((state)=>state.auth);
+
   return (
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (

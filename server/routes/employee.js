@@ -6,6 +6,6 @@ const router =express.Router();
 router.post("/createEmployee" ,createEmployee);
 router.post("/updateEmployee",updateEmployee);
 router.get("/getAllEmployees" ,fetchAllEmployee);
-router.post("/deleteEmployee",deleteEmployee);
+router.delete("/deleteEmployee",deleteEmployee);
 
 module.exports = router;
