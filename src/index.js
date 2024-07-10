@@ -6,9 +6,10 @@ import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import rootReducer from "./reducer";
 
 const store = configureStore({
-  reducer:{},
+  reducer: rootReducer,
 })
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { Signup } from "../services/operations/authOperation"
 
 function SignupForm() {
   const navigate = useNavigate()
@@ -25,7 +26,8 @@ function SignupForm() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // dispatch(login(email, password, navigate))
+    const userName = username;
+    dispatch(Signup(userName,password,navigate));
   }
 
   return (
