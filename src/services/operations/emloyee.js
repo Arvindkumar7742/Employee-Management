@@ -74,8 +74,7 @@ export async function deleteEmployee(id,navigate) {
     }
 
     toast.success("Employee deleted succefully");
-    navigate("/get-employee-list");
-
+    navigate("/dashboard/my-profile");
   } catch (error) {
     console.log("CREATE UPADATE API ERROR............", error)
     toast.error("Could not get employee list");
