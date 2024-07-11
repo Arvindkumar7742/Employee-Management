@@ -28,10 +28,10 @@ const employeeSchemma =new mongoose.Schema({
         type:String,
         required:true,
     },
-    f_Course:{
+    f_Course:[{
         type:String,
         required:true
-    },
+    }],
     f_createdate:{
         type:Date,
         default:Date.now(),

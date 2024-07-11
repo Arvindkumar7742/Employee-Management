@@ -7,8 +7,9 @@ import { Navbar } from "./components/Navbar";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Dashboard } from "./pages/Dashboard";
 import { MyProfile } from "./pages/MyProfile";
-import { CreateEmployee } from "./components/CreateEmployee";
+import  {CreateEmployee}  from "./components/CreateEmployee";
 import { EmployeeList } from "./components/EmployeeList";
+import { EditEmployee } from "./components/EditEmpoyee";
 
 function App() {
  
@@ -34,6 +35,9 @@ function App() {
           ></Route>
           <Route path="/dashboard/get-all-employee"
             element={<EmployeeList/>}
+          ></Route>
+          <Route path="/dashboard/editEmployee"
+            element={<EditEmployee/>}
           ></Route>
         </Route>
       </Routes>
