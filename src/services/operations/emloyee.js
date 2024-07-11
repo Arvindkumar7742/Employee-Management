@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { apiconnector } from "../apiConnector";
 import { EMPLOYEE } from "../apis";
 
-export function CreateEmployee(formData) {
+export function CreateEmployee(formData,navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("loading....");
     try {

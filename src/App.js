@@ -10,7 +10,6 @@ import { MyProfile } from "./pages/MyProfile";
 import { CreateEmployee } from "./components/CreateEmployee";
 import { EmployeeList } from "./components/EmployeeList";
 
-
 function App() {
  
   return (
@@ -34,7 +33,7 @@ function App() {
             element={<CreateEmployee />}
           ></Route>
           <Route path="/dashboard/get-all-employee"
-            element={<EmployeeList />}
+            element={<EmployeeList/>}
           ></Route>
         </Route>
       </Routes>
