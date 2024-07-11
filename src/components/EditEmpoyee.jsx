@@ -126,13 +126,13 @@ export const EditEmployee = () => {
                                     <div>
                                         <input type="radio" id="male" value="M"
                                             {...register("gender", { required: true })}
-                                            checked={f_gender == "M"}
+                                            defaultChecked={f_gender == "M"}
                                         />
                                         <label htmlFor="male">M</label>
                                     </div>
                                     <div>
                                         <input type="radio" id="female" value="F"
-                                            checked={f_gender == "F"}
+                                            defaultChecked={f_gender == "F"}
                                             {...register("gender", { required: true })} />
                                         <label htmlFor="female">F</label>
                                     </div>
@@ -148,7 +148,7 @@ export const EditEmployee = () => {
                                                 type="checkbox"
                                                 value="MCA"
                                                 {...register('course')}
-                                                checked={f_Course[0].includes("MCA")}
+                                                defaultChecked={f_Course[0].includes("MCA")}
                                             />
                                             MCA
                                         </label>
@@ -159,7 +159,7 @@ export const EditEmployee = () => {
                                                 type="checkbox"
                                                 value="BCA"
                                                 {...register('course')}
-                                                checked={f_Course[0].includes("BCA")}
+                                                defaultChecked={f_Course[0].includes("BCA")}
                                             />
                                             BCA
                                         </label>
@@ -170,7 +170,7 @@ export const EditEmployee = () => {
                                                 type="checkbox"
                                                 value="BSC"
                                                 {...register('course')}
-                                                checked={f_Course[0].includes("BSC")}
+                                                defaultChecked={f_Course[0].includes("BSC")}
                                             />
                                             BSC
                                         </label>

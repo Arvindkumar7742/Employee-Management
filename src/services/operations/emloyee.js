@@ -37,16 +37,16 @@ export async function updateEmployee(formData, navigate) {
 
     } catch (error) {
       console.log("CREATE UPADATE API ERROR............", error)
-      toast.error("Could not update employee");
+      toast.error(error.response.data.message);
     }
     toast.dismiss(toastId);
 }
 
-export async function getAllEmployees() {
+export async function getAllEmployees(params) {
   let result;
   const toastId = toast.loading("loading....");
   try {
-    const res = await apiconnector("GET", EMPLOYEE.GET_EMPLOYEES_API);
+    const res = await apiconnector("GET", EMPLOYEE.GET_EMPLOYEES_API,null,null,params);
 
     console.log("res:::=====>>>>>", res);
     if (!res.data.success) {

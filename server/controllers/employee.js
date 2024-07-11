@@ -55,7 +55,9 @@ exports.createEmployee = async (req, res) => {
 exports.fetchAllEmployee = async (req, res) => {
     try {
         //fetch all the employee
-        const employees = await T_Employee.find({});
+        console.log('req ', req.query)
+        const employees = await T_Employee.find({}).skip(req.query.offset)
+        .limit(req.query.limit);
 
         //return a successsfully response
         return res.status(200).json({
@@ -78,10 +80,13 @@ exports.updateEmployee = async (req, res) => {
         const { id, name, email, mobileNo, designation, gender, course } = req.body;
 
         //fetch the file
-        const img = req.files.img;
+        let img;
+        if (req.files) {
+            img = req.files.img;
+        }
 
         //validate the data - to be non empty
-        if (!name || !email || !mobileNo || !designation || !gender || !course || !img) {
+        if (!name || !email || !mobileNo || !designation || !gender || !course) {
             return res.status(400).json({
                 success: false,
                 message: "All the field are required."
@@ -93,26 +98,39 @@ exports.updateEmployee = async (req, res) => {
         if (!employeeExist) {
             return res.status(409).json({
                 success: false,
-                message: "email not exist."
+                message: "employee does not exist."
             });
         }
 
+        //check for duplicate email , if it is not the same email id
+        if (employeeExist.f_Email != email) {
+            const emailExist = await T_Employee.findOne({ f_Email: email });
+            if (emailExist) {
+                return res.status(409).json({
+                    success: false,
+                    message: "Email already exist"
+                });
+            }
+        }
         //upload image on cloudinary
-        const uploadedImage = await uploadOnCloudinary(img);
+        let uploadedImage = null;
+        if (img) {
+            uploadedImage = await uploadOnCloudinary(img);
+        }
 
         //update the employee
         const updatedEmployee = await T_Employee.findByIdAndUpdate(id, {
             f_Name: name, f_Email: email, f_Mobile: mobileNo,
             f_Designation: designation, f_gender: gender,
             f_Course: course,
-            f_Image: uploadedImage.secure_url
-        },{new:true})
+            f_Image: uploadedImage?.secure_url
+        }, { new: true })
 
         //return the success response
         return res.status(200).json({
-            success:true,
-            message:"Employee updated successfully,",
-            employee:updatedEmployee
+            success: true,
+            message: "Employee updated successfully,",
+            employee: updatedEmployee
         })
 
     } catch (error) {

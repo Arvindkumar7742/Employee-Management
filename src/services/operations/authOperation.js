@@ -22,7 +22,7 @@ export function Signup(userName, password, navigate) {
 
     } catch (error) {
       console.log("SIGNUP API ERROR............", error)
-      toast.error("Could not signup");
+      toast.error(error.response.data.message);
     }
     dispatch(setLoading(false));
     toast.dismiss(toastId);
@@ -48,7 +48,7 @@ export function login( userName, password, navigate) {
       navigate("/dashboard/my-profile");
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
-      toast.error("Could not login")
+      toast.error(error.response.data.message);
     }
     dispatch(setLoading(false));
     toast.dismiss(toastId);
