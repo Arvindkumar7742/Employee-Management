@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getAllEmployees } from '../services/operations/emloyee';
 import { formattedDate } from '../utils/dateFormatter';
+import { Link } from 'react-router-dom';
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
 
     const [loading, setLaoding] = useState(false);
-    const [ num, setNum ] = useState(0);
 
     async function fetchAllEmployee() {
         setLaoding(true);
@@ -24,9 +24,10 @@ export const EmployeeList = () => {
     }, []);
     return (
         <div className='text-white'>
+          <div className='text-3xl text-richblack-100 text-3xl mb-4'>Employee List</div>
             {
                 loading ? (<div className='spinner'></div>) : (
-                    employees.length == 0 ? (<div>No Employes in the list</div>) : (
+                    employees.length == 0 ? (<div className='text-richblack-300 text-2xl text-center'>No Employes in the list</div>) : (
                         <table>
                         <thead>
                           <tr>
@@ -45,9 +46,9 @@ export const EmployeeList = () => {
                         <tbody>
                           {employees.map((item) => (
                             <tr key={item.id}>
-                              <td>{num}</td>
+                              <td>{item.f_Id}</td>
                               <td><img className='rounded-full'
-                              src={item.f_Image} alt={item.name} width="50"/></td>
+                              src={item.f_Image} alt={item.name} width={50} height={50}/></td>
                               <td>{item.f_Name}</td>
                               <td>{item.f_Email}</td>
                               <td>{item.f_Mobile}</td>
@@ -56,8 +57,8 @@ export const EmployeeList = () => {
                               <td>{item.f_Course}</td>
                               <td className='w-[200px]'>{formattedDate(item.f_createdate)}</td>
                               <td className='flex flex-row gap-5'>
-                                <button className='bg-richblack-500 p-3 text-white rounded-lg hover:bg-richblack-700'>Edit</button>
-                                <button className='bg-richblack-500 p-3 text-white rounded-lg hover:bg-richblack-700'>Delete</button>
+                                <Link to="/dashboard/editEmployee" state={item}><button className='bg-richblack-500 p-3 text-white rounded-lg hover:bg-richblack-700'>Edit</button></Link>
+                                <Link to="/dashboard/deleteEmployee" state={item._id}><button className='bg-richblack-500 p-3 text-white rounded-lg hover:bg-richblack-700'>Delete</button></Link>
                               </td>
                             </tr>
                           ))}
