@@ -16,6 +16,7 @@ body {
 .gradient-bg {
   background: linear-gradient(to r, #FFFFFF 82%, #FFFFFF 10%);
 }
+
 .spinner {
   width: 56px;
   height: 56px;
@@ -28,4 +29,47 @@ body {
   100% {
      transform: rotate(1turn);
   }
+}
+
+.emp {
+  text-align: center;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 5px solid #537988;
+  padding: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #537988;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.page-link:hover {
+  background-color: #ddd;
 }
